@@ -13,9 +13,8 @@ public class CheckoutController {
 
     @RequestMapping("/checkout")
     public String checkout(Model model) {
-        model.addAttribute("amount", 50 * 100); // in cents
         model.addAttribute("stripePublicKey", stripePublicKey);
-        model.addAttribute("currency", ChargeRequest.Currency.EUR);
+        model.addAttribute("currency", ChargeRequest.Currency.AUD);
         return "checkout";
     }
 }

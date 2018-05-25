@@ -1,159 +1,215 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
 
+<head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!DOCTYPE html>
-    <html lang="en">
+    <title>Red Hill Kindy Shop</title>
 
-    <head>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
 
-        <title>Red Hill Kindy Shop</title>
+</head>
 
-        <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<body>
 
-        <!-- Custom styles for this template -->
-        <link href="css/shop-item.css" rel="stylesheet">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Red Hill Kindy Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Shop
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.redhillkindergarten.com.au/about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.redhillkindergarten.com.au/contact-us/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-    </head>
+<!-- Page Content -->
+<div class="container">
 
-    <body>
+    <div class="row">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Start Shopping</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Shop
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.redhillkindergarten.com.au/about/">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.redhillkindergarten.com.au/contact-us/">Contact</a>
-                    </li>
-                </ul>
+        <div class="col-lg-3">
+            <h1 class="my-4">Red Hill Fair July 28th 2018</h1>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">All Day Unlimited Rides Pass</a>
             </div>
         </div>
-    </nav>
+        <!-- /.col-lg-3 -->
 
-    <!-- Page Content -->
-    <div class="container">
+        <div class="col-lg-9">
 
-        <div class="row">
-
-            <div class="col-lg-3">
-                <h1 class="my-4">Red Hill Kindy Shop</h1>
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">Unlimited Rides Pass</a>
+            <div class="card mt-4">
+                <img class="card-img-top img-fluid" src="rides.png" alt="">
+                <div class="card-body">
+                    <h3 class="card-title">Unlimited Ride Pass</h3>
+                    <h4>$27.77</h4>
+                    <p class="card-text">
+                        Includes unlimited rides from 9am - 3pm on the day of the fair
+                        including super slide, rock climbing wall, speed racer, ferris wheel,
+                        jumping castles, animal farm and pony rides.<br/>
+                        Buy online or purchase from the Red Hill Kindy Office before fair day by calling 3369 4756<br/>
+                        Available at the fair for $32<br/>
+                        * Includes $0.77 <a href="https://stripe.com/au/pricing" target="_blank">transaction fee</a>.
+                    </p>
                 </div>
             </div>
-            <!-- /.col-lg-3 -->
 
-            <div class="col-lg-9">
+            <div class="card my-4">
+                <div class="card-deck mb-3 text-center">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Buy 1</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">$27.77</h1>
 
-                <div class="card mt-4">
-                    <img class="card-img-top img-fluid" src="rides.png" alt="">
-                    <div class="card-body">
-                        <h3 class="card-title">Unlimited Ride Pass</h3>
-                        <h4>$27.00</h4>
-                        <p class="card-text">
-                        <form action='/charge' method='POST' id='checkout-form'>
+                            <form action='/charge?quantity=1' method='POST' id='checkout-form1'>
                             <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="pk_test_ZW14jrPYMbUdLm6LQ4sktKy5"
-                                    data-amount="2700"
+                                    th:attr='data-key=${stripePublicKey}'
+                                    data-amount="2777"
                                     data-name="Red Hill Kindergarten"
                                     data-description="Unlimited Ride Pass"
                                     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                     data-locale="auto"
-                                    data-currency="aud">
+                                    data-currency="AUD">
                             </script>
                         </form>
-                        </p>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Buy 2</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">$55.54</h1>
+                            <form action='/charge?quantity=2' method='POST' id='checkout-form2'>
+                                <script
+                                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        th:attr='data-key=${stripePublicKey}'
+                                        data-amount="5554"
+                                        data-name="Red Hill Kindergarten"
+                                        data-description="Unlimited Ride Pass"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        data-locale="auto"
+                                        data-currency="AUD">
+                                </script>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Buy 3</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">$83.31</h1>
+                            <form action='/charge?quantity=3' method='POST' id='checkout-form3'>
+                                <script
+                                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        th:attr='data-key=${stripePublicKey}'
+                                        data-amount="8331"
+                                        data-name="Red Hill Kindergarten"
+                                        data-description="Unlimited Ride Pass"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        data-locale="auto"
+                                        data-currency="AUD">
+                                </script>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <!-- /.card -->
-
-                <div class="card card-outline-secondary my-4">
-                    <div class="card-header">
-                        Rides
-                    </div>
-                    <div class="card-body">
-                        <p>This slide has three big lanes and is 20m long, 5m wide and is great fun for all ages..</p>
-                        <small class="text-muted">Super Slide</small>
-                        <hr>
-                        <p>The rockwall provides great entertainment for all ages! With safety harnesses
-                            to allow the children to safely come back down to the ground after scaling the
-                            9.5m rock face, what fun!</p>
-                        <small class="text-muted">Rockwall</small>
-                        <hr>
-                        <p>Two fire engines, two corvettes, two dune buggies, too much fun! Great for
-                            fundraising events with getting through the line-ups fast.</p>
-                        <small class="text-muted">Ferris Wheel</small>
-                        <hr>
-                        <p>What carnival would be complete without this great showground tradition?
-                            Children love it!</p>
-                        <small class="text-muted">Speed Racer</small>
-                        <hr>
-                        <p>Scooby Doo eat your heart out. This little beauty is perfect for the younger age
-                            groups, and a great addition close to a larger castle for the little ones to get
-                            their confidence up. Perfect on its own as well</p>
-                        <small class="text-muted">Bow Wow Castle</small>
-                        <hr>
-                        <p>This is big, it’s very big and great exercise. An awesome way to burn up a bit
-                            of that excessive energy. Our Sports Castle is extremely popular at both fetes
-                            and sporting breakups. It’s made up of one big slide, and 2 jumping areas on
-                            each side.</p>
-                        <small class="text-muted">Sports Castle</small>
-                        <hr>
-                        <p>What child doesn’t love animals? We bring along 30 plus, hand raised farm
-                            animals for the children to hold and pet. The pen is 5m x 6m which is full of
-                            sheep, lambs, goats, kids, calves, ducks, ducklings, chickens, chicks and
-                            guinea pigs.</p>
-                        <small class="text-muted">Animal Farm</small>
-                        <hr>
-                        <p>The nature and temperament of our ponies is hard to match. We bring along
-                            the required number of ponies, with its own wrangler, western saddle, child’s
-                            helmet and all the necessary equipment required to ensure the safety of our
-                            customers.</p>
-                        <small class="text-muted">Ponies</small>
-                        <hr>
-                    </div>
-                </div>
-                <!-- /.card -->
-
             </div>
-            <!-- /.col-lg-9 -->
+            <!-- /.card -->
+
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Rides
+                </div>
+                <div class="card-body">
+                    <h4>Super Slide</h4>
+                    <p>This slide has three big lanes and is 20m long, 5m wide and is great fun for all ages.</p>
+                    <hr>
+                    <h4>Rockwall</h4>
+                    <p>The rockwall provides great entertainment for all ages! With safety harnesses
+                        to allow the children to safely come back down to the ground after scaling the
+                        9.5m rock face, what fun!</p>
+                    <hr>
+                    <h4>Ferris Wheel</h4>
+                    <p>Two fire engines, two corvettes, two dune buggies, too much fun! Great for
+                        fundraising events with getting through the line-ups fast.</p>
+                    <hr>
+                    <h4>Speed Racer</h4>
+                    <p>What carnival would be complete without this great showground tradition?
+                        Children love it!</p>
+                    <hr>
+                    <h4>Bow Wow Castle</h4>
+                    <p>Scooby Doo eat your heart out. This little beauty is perfect for the younger age
+                        groups, and a great addition close to a larger castle for the little ones to get
+                        their confidence up. Perfect on its own as well</p>
+                    <hr>
+                    <h4>Sports Castle</h4>
+                    <p>This is big, it’s very big and great exercise. An awesome way to burn up a bit
+                        of that excessive energy. Our Sports Castle is extremely popular at both fetes
+                        and sporting breakups. It’s made up of one big slide, and 2 jumping areas on
+                        each side.</p>
+                    <h4>Animal Farm</h4>
+                    <p>What child doesn’t love animals? We bring along 30 plus, hand raised farm
+                        animals for the children to hold and pet. The pen is 5m x 6m which is full of
+                        sheep, lambs, goats, kids, calves, ducks, ducklings, chickens, chicks and
+                        guinea pigs.</p>
+                    <hr>
+                    <h4>Pony Rides</h4>
+                    <p>The nature and temperament of our ponies is hard to match. We bring along
+                        the required number of ponies, with its own wrangler, western saddle, child’s
+                        helmet and all the necessary equipment required to ensure the safety of our
+                        customers.</p>
+                    <hr>
+                </div>
+            </div>
+            <!-- /.card -->
 
         </div>
+        <!-- /.col-lg-9 -->
 
     </div>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Red Hill Kindy 2018</p>
+    </div>
     <!-- /.container -->
+</footer>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Red Hill Kindy 2018</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
 
-    </body>
-
-    </html>
+</html>

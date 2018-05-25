@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Log
 @Controller
@@ -17,10 +18,10 @@ public class ChargeController {
     StripeService paymentsService;
 
     @PostMapping("/charge")
-    public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+    public String charge(ChargeRequest chargeRequest, Model model, @RequestParam("quantity") int quantity) throws StripeException {
         chargeRequest.setDescription("Unlimited ride pass");
         chargeRequest.setCurrency(ChargeRequest.Currency.AUD);
-        chargeRequest.setAmount(2700);
+        chargeRequest.setAmount(2777*quantity);
         Charge charge = paymentsService.charge(chargeRequest);
         model.addAttribute("id", charge.getId());
         model.addAttribute("status", charge.getStatus());
