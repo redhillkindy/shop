@@ -7,7 +7,7 @@
         <h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
         <div th:unless='${error}'>
             <h3 style='color: green;'>Success!</h3>
-            <p>Please print or save this confirmation, you will be able to collect your passes from the Kindy as soon as they are available.</p>
+            <p>Please print or save this confirmation, you can pick up your tickets from the teachers tent on the day.</p>
             <div>Id.: <span th:text='${id}' /></div>
             <div>Status: <span th:text='${status}' /></div>
             <div>Charge id.: <span th:text='${chargeId}' /></div>
